@@ -9,26 +9,89 @@
 </head>
 <body>
     <div class="conteiner flex">
-        <div class="calcConteiner">
-            <div class="calcTopSection flex">
-                <div class="displayFrameBlack flex">
-                    <div class="Lable">CITIZEN</div>
-                    <div class="displayFrameSilver flex">
-                        <div class="display"></div>
-                    </div>                   
-                </div> 
-                <div class="modelSection flex">
-                    <div class="model">
-                        <p class="GDC">GDC-888T<span class="small2">II</span></p>
-                        <p class="twelveDigit">12-DIGIT-CALCULATOR</p>
-                        <p class="twoPower">2 power</p>
+        <div>
+            <div class="calcConteiner darkGray higlight">
+                <div class="calcTopSection flex">
+                    <div class="displayFrameBlack flex black">
+                        <div class="Lable">CITIZEN</div>
+                        <div class="displayFrameSilver flex silver">
+                            <div class="display flex shadow ">
+                                <div class="displaySign flex">
+                                    <div class="memotyLoad">MII</div>
+                                    <div class="plusMinus">&#8212</div>
+                                    <div class="overflowError">E</div>    
+                                </div>
+                                <div class="curientValue flex">000000000000.</div>
+                            </div>
+                        </div>                   
+                    </div> 
+                    <div class="modelSection flex black">
+                        <div class="model flex">
+                            <p class="GDC">SDC-888T<span class="small2">II</span></p>
+                            <p class="twelveDigit">12-DIGIT-CALCULATOR</p>
+                            <p class="twoPower">2 power</p>
+                        </div>
+                        <div class="solar flex">
+                            <div class="solarPlate shadow"></div>
+                        </div>
+                    </div>               
+                </div>
+                <div class="calcButtonsSection flex">
+                    <div class="ButtonsSection flex">
+                        <div class="collOne flex">
+                            <div class="rounding flex">
+                                <div>↑5/4↓</div>
+                                <input type="range" name="" id="roundingInput" min="1" max="3" step="1">
+                            </div>
+                            <button class="button butColor">MC</button>
+                            <button class="button butColor">00→0</button>
+                            <button class="button butColor">+/-</button>
+                            <button class="button blue"><span class="ON">ON</span> AC</button>
+                            <button class="buttonExt CEC blue">CE/C</button>
+                        </div>
+                        <div class="collTwo flex">
+                            <button class="buttonSmall butColor flex"><div>MII</div><div class="mIIrc flex"><div>R</div><div>C</div></div></button>
+                            <button class="buttonSmall butColor">MII&#8212</button>
+                            <button class="buttonSmall butColor">MII+</button>
+                            <button class="button butColor">MR</button>
+                            <button class="button butColor">M&#8212</button>
+                            <button class="button butColor">M+</button>
+                            <button class="button butColor">7</button>
+                            <button class="button butColor">8</button>
+                            <button class="button butColor">9</button>
+                            <button class="button butColor">4</button>
+                            <button class="button butColor">5</button>
+                            <button class="button butColor">6</button>
+                            <button class="button butColor">1</button>
+                            <button class="button butColor">2</button>
+                            <button class="button butColor">3</button>
+                            <button class="buttonExt butColor">0</button>
+                            <button class="button butColor">00</button>
+                            <button class="button butColor">.</button>
+                        </div>
+                        <div class="collThere flex">
+                            <div class="decimal flex">
+                                <div>A0234F</div>
+                                <input type="range" name="" id="decimalInput" min="1" max="6" step="1" value="6">
+                            </div>
+                            <div class="actions flex">
+                                <button class="button butColor">√</button>
+                                <button class="button butColor">MU</button>
+                                <button class="button butColor">/</button>
+                                <button class="button butColor">%</button>
+                                <button class="button butColor">X</button>
+                                <button class="button butColor">&#8212</button>    
+                            </div>
+                            <div class="plusEquals flex">
+                                <button class="buttonPlus butColor">+</button>
+                                <button class="buttonEquals butColor">=</button>    
+                            </div>    
+                        </div>    
                     </div>
-                    <div class="solar"></div>
-                </div>               
+                    </div>
+                </div>
             </div>
-            <div class="calcButtonsSection">
-
-            </div>
+    
         </div>
     </div>
 </body>

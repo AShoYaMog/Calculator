@@ -1,6 +1,8 @@
 @font-face {
-    font-family: calculator;
-    src: url(/font/digital-7.ttf);
+    font-family: "digital-7Regular"; 
+    src: url("../font/digital-7/digital-7.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
 }
 
 * {
@@ -132,7 +134,7 @@ p {
     height: 55px;
     width: 295px;
     justify-content: space-between;
-    font-family: calculator;
+    font-family: 'digital-7Regular';
 }
 
 .curientValue,

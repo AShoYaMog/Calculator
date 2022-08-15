@@ -55,7 +55,7 @@ function addOperation(event) {
         firstValueExist = true;
         operation = event.target.value;
     }
-    if (firstValueExist) {
+    if (firstValueExist && secondValue) {
         calculate()
         operation = event.target.value;
     }
@@ -80,19 +80,19 @@ function calculate() {
 }
 
 function addition() {
-    return firstValue = (firstValue * 1) + (secondValue * 1);
+    return firstValue = Number(firstValue) + Number(secondValue);
 }
 
 function subtraction() {
-    return firstValue = (firstValue*1) - (secondValue * 1);
+    return firstValue = Number(firstValue) - Number(secondValue);
 }
 
 function multiplication() {
-    return firstValue = (firstValue*1) * (secondValue * 1);
+    return firstValue = Number(firstValue) * Number(secondValue);
 }
 
 function division() {
-    return firstValue = (firstValue*1) / (secondValue * 1);
+    return firstValue = Number(firstValue) / Number(secondValue);
 }
 
 function display() {

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/app.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
@@ -44,10 +45,10 @@
                                 <input type="range" name="" id="roundingInput" min="1" max="3" step="1">
                             </div>
                             <button class="button butColor">MC</button>
-                            <button class="button butColor">00→0</button>
-                            <button class="button butColor">+/-</button>
+                            <button class="button butColor" id="removeNumber">00→0</button>
+                            <button class="button butColor" id="minusValue">+/-</button>
                             <button class="button blue"><span class="ON">ON</span> AC</button>
-                            <button class="buttonExt CEC blue">CE/C</button>
+                            <button class="buttonExt CEC blue" id="CEC">CE/C</button>
                         </div>
                         <div class="collTwo flex">
                             <button class="buttonSmall butColor flex"><div>MII</div><div class="mIIrc flex"><div>R</div><div>C</div></div></button>
@@ -56,18 +57,18 @@
                             <button class="button butColor">MR</button>
                             <button class="button butColor">M&#8212</button>
                             <button class="button butColor">M+</button>
-                            <button class="button butColor">7</button>
-                            <button class="button butColor">8</button>
-                            <button class="button butColor">9</button>
-                            <button class="button butColor">4</button>
-                            <button class="button butColor">5</button>
-                            <button class="button butColor">6</button>
-                            <button class="button butColor">1</button>
-                            <button class="button butColor">2</button>
-                            <button class="button butColor">3</button>
-                            <button class="buttonExt butColor">0</button>
-                            <button class="button butColor">00</button>
-                            <button class="button butColor">.</button>
+                            <button class="button butColor numbers" value="7">7</button>
+                            <button class="button butColor numbers" value="8">8</button>
+                            <button class="button butColor numbers" value="9">9</button>
+                            <button class="button butColor numbers" value="4">4</button>
+                            <button class="button butColor numbers" value="5">5</button>
+                            <button class="button butColor numbers" value="6">6</button>
+                            <button class="button butColor numbers" value="1">1</button>
+                            <button class="button butColor numbers" value="2">2</button>
+                            <button class="button butColor numbers" value="3">3</button>
+                            <button class="buttonExt butColor numbers" value="0">0</button>
+                            <button class="button butColor numbers" value="00">00</button>
+                            <button class="button butColor numbers" value=".">.</button>
                         </div>
                         <div class="collThere flex">
                             <div class="decimal flex">
@@ -75,16 +76,16 @@
                                 <input type="range" name="" id="decimalInput" min="1" max="6" step="1" value="6">
                             </div>
                             <div class="actions flex">
-                                <button class="button butColor">√</button>
-                                <button class="button butColor">MU</button>
-                                <button class="button butColor">/</button>
-                                <button class="button butColor">%</button>
-                                <button class="button butColor">X</button>
-                                <button class="button butColor">&#8212</button>    
+                                <button class="button butColor operation" value="">√</button>
+                                <button class="button butColor " value="">MU</button>
+                                <button class="button butColor operation" value="divide">/</button>
+                                <button class="button butColor " value="">%</button>
+                                <button class="button butColor operation" value="multiply">X</button>
+                                <button class="button butColor operation" value="minus">&#8212</button>    
                             </div>
                             <div class="plusEquals flex">
-                                <button class="buttonPlus butColor">+</button>
-                                <button class="buttonEquals butColor">=</button>    
+                                <button class="buttonPlus butColor operation" value="plus">+</button>
+                                <button class="buttonEquals butColor" id="equals">=</button>    
                             </div>    
                         </div>    
                     </div>

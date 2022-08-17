@@ -26,6 +26,10 @@ minusButton.addEventListener("mouseup", () => {
         return display()
     };   
 })
+let ceC = document.querySelector('#CEC');
+ceC.addEventListener("mouseup", CeC);
+
+
 
 let equalsButton = document.querySelector('#equals');
 equalsButton.addEventListener("mouseup", equals)
@@ -109,4 +113,11 @@ function displayResult() {
     displayValue.textContent = firstValue;
     if (minusSelect) minusicon.style.opacity = '1';
     if (!minusSelect) minusicon.style.opacity = '0';
+}
+
+function CeC() {
+    if (firstValue && !operation && !secondValue) firstValue = ''; 
+    if (firstValue && operation && !secondValue) operation = ''; 
+    if (firstValue && operation && secondValue) secondValue = ''; 
+    display()
 }

@@ -1,3 +1,4 @@
+const NUMBER_OF_DIGITTS = 12;
 let firstValue = '';
 let secondValue = '';
 let operation = '';
@@ -34,7 +35,8 @@ let onAcButton = document.querySelector('#OnAc');
 OnAc.addEventListener("mouseup", allClear);
 let overflowError = false;
 let overflowErrorIcon = document.querySelector('.overflowError');
-
+let squareRootButton = document.querySelector('#squareRoot');
+squareRootButton.addEventListener("mouseup", squareRoot);
 
 function isNegativ() {
     if (!minusSelect) return
@@ -45,8 +47,8 @@ function isNegativ() {
 function addNumber(event) {
     if (!firstValueExist) firstValue += event.target.value;
     if (firstValueExist) secondValue += event.target.value;
-    if (firstValue.length > 12) remuveNumber()
-    if (secondValue.length > 12 ) remuveNumber()
+    if (firstValue.length > NUMBER_OF_DIGITTS) remuveNumber()
+    if (secondValue.length > NUMBER_OF_DIGITTS ) remuveNumber()
     display()
 }
 
@@ -106,6 +108,13 @@ function division() {
     return firstValue = Number(firstValue) / Number(secondValue);
 }
 
+function squareRoot() {
+    firstValue = Math.sqrt(firstValue);
+    firstValue = firstValue.toFixed(NUMBER_OF_DIGITTS - Math.round(firstValue));
+    firstValueExist = true;
+    displayResult()
+}
+
 function display() {
     if (!firstValueExist) displayValue.textContent = firstValue;
     if (firstValueExist) displayValue.textContent = secondValue;
@@ -113,6 +122,7 @@ function display() {
     if (!minusSelect) minusicon.style.opacity = '0';
     if (overflowError) overflowErrorIcon.style.opacity = '1';
     if (!overflowError) overflowErrorIcon.style.opacity = '0';
+
 }
 
 function displayResult() {

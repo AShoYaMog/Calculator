@@ -32,6 +32,8 @@ let CeCButton = document.querySelector('#CEC');
 CeCButton.addEventListener("mouseup", CeC);
 let onAcButton = document.querySelector('#OnAc');
 OnAc.addEventListener("mouseup", allClear);
+let overflowError = false;
+let overflowErrorIcon = document.querySelector('.overflowError');
 
 
 function isNegativ() {
@@ -40,9 +42,11 @@ function isNegativ() {
     if (minusSelect && firstValueExist) return secondValue *= -1;
 }
 
-function addNumber(event) {    
+function addNumber(event) {
     if (!firstValueExist) firstValue += event.target.value;
-    if (firstValueExist) secondValue += event.target.value;    
+    if (firstValueExist) secondValue += event.target.value;
+    if (firstValue.length > 12) remuveNumber()
+    if (secondValue.length > 12 ) remuveNumber()
     display()
 }
 
@@ -107,6 +111,8 @@ function display() {
     if (firstValueExist) displayValue.textContent = secondValue;
     if (minusSelect) minusicon.style.opacity = '1';
     if (!minusSelect) minusicon.style.opacity = '0';
+    if (overflowError) overflowErrorIcon.style.opacity = '1';
+    if (!overflowError) overflowErrorIcon.style.opacity = '0';
 }
 
 function displayResult() {
@@ -135,5 +141,6 @@ function allClear() {
     secondValue = '';
     firstValueExist = false;
     minusSelect = false;
+    overflowError = false;
     display()
 }

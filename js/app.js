@@ -26,13 +26,13 @@ minusButton.addEventListener("mouseup", () => {
         return display()
     };   
 })
-let ceC = document.querySelector('#CEC');
-ceC.addEventListener("mouseup", CeC);
-
-
-
 let equalsButton = document.querySelector('#equals');
 equalsButton.addEventListener("mouseup", equals)
+let CeCButton = document.querySelector('#CEC');
+CeCButton.addEventListener("mouseup", CeC);
+let onAcButton = document.querySelector('#OnAc');
+OnAc.addEventListener("mouseup", allClear);
+
 
 function isNegativ() {
     if (!minusSelect) return
@@ -125,10 +125,15 @@ function CeC() {
         firstValueExist = false;
     }
     if (firstValue && operation && secondValue) secondValue = '';
-    minusSelect = false; 
+    minusSelect = false;
     display()
 }
 
 function allClear() {
-    
+    firstValue = '';
+    operation = '';
+    secondValue = '';
+    firstValueExist = false;
+    minusSelect = false;
+    display()
 }

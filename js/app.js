@@ -116,8 +116,19 @@ function displayResult() {
 }
 
 function CeC() {
-    if (firstValue && !operation && !secondValue) firstValue = ''; 
-    if (firstValue && operation && !secondValue) operation = ''; 
-    if (firstValue && operation && secondValue) secondValue = ''; 
+    if (firstValue && !operation && !secondValue) {
+        firstValue = '';
+        firstValueExist = false;
+    } 
+    if (firstValue && operation && !secondValue) {
+        operation = ''; 
+        firstValueExist = false;
+    }
+    if (firstValue && operation && secondValue) secondValue = '';
+    minusSelect = false; 
     display()
+}
+
+function allClear() {
+    
 }

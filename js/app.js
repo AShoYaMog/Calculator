@@ -55,6 +55,9 @@ function addOperation(event) {
         firstValueExist = true;
         operation = event.target.value;
     }
+    if (firstValueExist && !secondValue) {
+        operation = event.target.value;
+    }
     if (firstValueExist && secondValue) {
         calculate()
         operation = event.target.value;

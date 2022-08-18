@@ -6,18 +6,18 @@ let firstValueExist = false;
 let displayValue = document.querySelector('.curientValue');
 let inputButton = document.querySelectorAll('.numbers');
 inputButton.forEach( button => {
-    button.addEventListener("mouseup", event => {addNumber(event)})
+    button.addEventListener('mouseup', event => {addNumber(event)})
 })
 let removeNumberButton = document.querySelector('#removeNumber');
-removeNumberButton.addEventListener("mouseup", remuveNumber);
+removeNumberButton.addEventListener('mouseup', remuveNumber);
 let operationButton = document.querySelectorAll('.operation');
 operationButton.forEach( button => {
-    button.addEventListener("mouseup",  event => {addOperation(event)});
+    button.addEventListener('mouseup',  event => {addOperation(event)});
 })
 let minusSelect = false;
 let minusicon = document.querySelector('.plusMinus')
 let minusButton = document.querySelector('#minusValue');
-minusButton.addEventListener("mouseup", () => {
+minusButton.addEventListener('mouseup', () => {
     if (!minusSelect) {
         minusSelect = true;
         return display()
@@ -28,20 +28,26 @@ minusButton.addEventListener("mouseup", () => {
     };   
 })
 let equalsButton = document.querySelector('#equals');
-equalsButton.addEventListener("mouseup", equals)
+equalsButton.addEventListener('mouseup', equals)
 let CeCButton = document.querySelector('#CEC');
-CeCButton.addEventListener("mouseup", CeC);
+CeCButton.addEventListener('mouseup', CeC);
 let onAcButton = document.querySelector('#OnAc');
-OnAc.addEventListener("mouseup", allClear);
+OnAc.addEventListener('mouseup', allClear);
 let overflowError = false;
 let overflowErrorIcon = document.querySelector('.overflowError');
 let squareRootButton = document.querySelector('#squareRoot');
-squareRootButton.addEventListener("mouseup", squareRoot);
+squareRootButton.addEventListener('mouseup', squareRoot);
+let procentButton = document.querySelector('#procent');
+procentButton.addEventListener('mouseup', procent);
 
 function isNegativ() {
     if (!minusSelect) return
     if (minusSelect && !firstValueExist) return firstValue *= -1;
     if (minusSelect && firstValueExist) return secondValue *= -1;
+}
+
+function isMInusSelect() {
+    minusSelect ? minusicon.style.opacity = '1' : minusicon.style.opacity = '0';
 }
 
 function addNumber(event) {
@@ -115,11 +121,17 @@ function squareRoot() {
     displayResult()
 }
 
+function procent() {
+    if (!firstValueExist) return;
+    secondValue = firstValue * (secondValue / 100);
+    display();
+}
+
+
 function display() {
     if (!firstValueExist) displayValue.textContent = firstValue;
     if (firstValueExist) displayValue.textContent = secondValue;
-    if (minusSelect) minusicon.style.opacity = '1';
-    if (!minusSelect) minusicon.style.opacity = '0';
+    isMInusSelect()
     if (overflowError) overflowErrorIcon.style.opacity = '1';
     if (!overflowError) overflowErrorIcon.style.opacity = '0';
 
@@ -127,8 +139,7 @@ function display() {
 
 function displayResult() {
     displayValue.textContent = firstValue;
-    if (minusSelect) minusicon.style.opacity = '1';
-    if (!minusSelect) minusicon.style.opacity = '0';
+    isMInusSelect()
 }
 
 function CeC() {

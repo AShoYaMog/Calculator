@@ -153,6 +153,17 @@ p {
     justify-content: space-around;
 }
 
+.memotyLoad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#MOneSign,
+#MTwoSign {
+    color: black;
+}
+
 /* .plusMinus {
     height: 10px;
 } */

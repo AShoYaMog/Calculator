@@ -2,8 +2,8 @@ const NUMBER_OF_DIGITTS = 12;
 let firstValue = '';
 let secondValue = '';
 let operation = '';
-let memoryOne = 0;
-let memoryTwo = 0;
+let memoryOne = '';
+let memoryTwo = '';
 let firstValueExist = false;
 let displayValue = document.querySelector('.curientValue');
 let inputButton = document.querySelectorAll('.numbers');
@@ -56,6 +56,8 @@ MemoryTwoMinusButton.addEventListener('mouseup', memoryTwoMinus);
 let MemoryTwoReadClearButton = document.querySelector('#MemoryTwoReadClear');
 MemoryTwoReadClearButton.addEventListener('mouseup', MemoryTwoReadClear);
 let MemoryTwoPrest = false;
+let MemoryOneIcon = document.querySelector('#MOneSign');
+let MemoryTwoIcon = document.querySelector('#MTwoSign');
 
 
 function isNegativ() {
@@ -66,6 +68,11 @@ function isNegativ() {
 
 function isMInusSelect() {
     minusSelect ? minusicon.style.opacity = '1' : minusicon.style.opacity = '0';
+}
+
+function isMemoryFill() {
+    MemoryOneIcon.style.opacity = (memoryOne || memoryTwo) ?  '1' : '0';
+    MemoryTwoIcon.style.opacity = memoryTwo ?  '1' : '0';
 }
 
 function addNumber(event) {
@@ -133,6 +140,7 @@ function division() {
 }
 
 function squareRoot() {
+    isNegativ()
     firstValue = Math.sqrt(firstValue);
     firstValue = firstValue.toFixed(NUMBER_OF_DIGITTS - Math.round(firstValue));
     firstValueExist = true;
@@ -149,14 +157,16 @@ function procent() {
 function display() {
     if (!firstValueExist) displayValue.textContent = firstValue;
     if (firstValueExist) displayValue.textContent = secondValue;
-    isMInusSelect()
+    isMInusSelect();
+    isMemoryFill();
     if (overflowError) overflowErrorIcon.style.opacity = '1';
     if (!overflowError) overflowErrorIcon.style.opacity = '0';
 }
 
 function displayResult() {
     displayValue.textContent = firstValue;
-    isMInusSelect()
+    isMInusSelect();
+    isMemoryFill();
 }
 
 function CeC() {
@@ -173,11 +183,12 @@ function allClear() {
     firstValue = '';
     operation = '';
     secondValue = '';
+    memoryOne = '';
+    memoryTwo = '';
     firstValueExist = false;
     minusSelect = false;
     overflowError = false;
     MamoryTwoPrest = false;
-
     display()
 }
 
@@ -188,15 +199,21 @@ function clearFirstValue() {
 }
 
 function memoryOnePlus() {
+    isNegativ()
     if (firstValueExist && secondValue) calculate();
     memoryOne = Number(memoryOne) + Number(firstValue);
-    clearFirstValue()
+    clearFirstValue();
+    minusSelect = false;
+    display();
 }
 
 function memoryOneMinus() {
+    isNegativ()
     if (firstValueExist && secondValue) calculate();
     memoryOne = Number(memoryOne) - Number(firstValue);
-    clearFirstValue()  
+    clearFirstValue();
+    minusSelect = false;
+    display();
 }
 
 function memoryOneRead() {
@@ -206,33 +223,41 @@ function memoryOneRead() {
 }
 
 function memoryOneClear() {
-    memoryOne = 0;
+    memoryOne = '';
     CeC()
 }
 
 function memoryTwoPlus() {
+    isNegativ()
     if (firstValueExist && secondValue) calculate();
     memoryTwo = Number(memoryTwo) + Number(firstValue);
-    clearFirstValue()
+    clearFirstValue();
+    minusSelect = false;
+    display();
 }
 
 function memoryTwoMinus() {
+    isNegativ()
     if (firstValueExist && secondValue) calculate();
     memoryTwo = Number(memoryTwo) - Number(firstValue);
-    clearFirstValue()  
+    clearFirstValue();
+    minusSelect = false;
+    display(); 
 }
 
 function MemoryTwoReadClear() {
     if (MamoryTwoPrest) {
-        memoryTwo = 0;
+        display();
+        memoryTwo = '';
         CeC();
     }
     if (!MamoryTwoPrest) {
         if (firstValueExist) secondValue = memoryTwo;
         if (!firstValueExist) firstValue = memoryTwo;
         MamoryTwoPrest = true;
+        display()
     }    
-    display()
+    
 }
 
 

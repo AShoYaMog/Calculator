@@ -58,6 +58,7 @@ MemoryTwoReadClearButton.addEventListener('mouseup', MemoryTwoReadClear);
 let MemoryTwoPrest = false;
 let MemoryOneIcon = document.querySelector('#MOneSign');
 let MemoryTwoIcon = document.querySelector('#MTwoSign');
+let decimalInput = document.querySelector('#decimalInput');
 
 
 function isNegativ() {
@@ -115,28 +116,28 @@ function equals() {
 
 function calculate() {
     if (!operation) return;
-    if (operation === 'plus') addition();
-    if (operation === 'minus') subtraction();
-    if (operation === 'multiply') multiplication();
-    if (operation === 'divide') division();
+    if (operation === 'plus') firstValue = decimalLimiter(addition());
+    if (operation === 'minus') firstValue = decimalLimiter(subtraction());
+    if (operation === 'multiply') firstValue = decimalLimiter(multiplication());
+    if (operation === 'divide') firstValue = decimalLimiter(division());
     secondValue = '';
     displayResult()
 }
 
 function addition() {
-    return firstValue = Number(firstValue) + Number(secondValue);
+    return Number(firstValue) + Number(secondValue);
 }
 
 function subtraction() {
-    return firstValue = Number(firstValue) - Number(secondValue);
+    return Number(firstValue) - Number(secondValue);
 }
 
 function multiplication() {
-    return firstValue = Number(firstValue) * Number(secondValue);
+    return Number(firstValue) * Number(secondValue);
 }
 
 function division() {
-    return firstValue = Number(firstValue) / Number(secondValue);
+    return Number(firstValue) / Number(secondValue);
 }
 
 function squareRoot() {
@@ -256,8 +257,15 @@ function MemoryTwoReadClear() {
         if (!firstValueExist) firstValue = memoryTwo;
         MamoryTwoPrest = true;
         display()
-    }    
-    
+    }        
+}
+
+function decimalLimiter(resultOf) {
+    if (decimalInput.value === ('1' || '3')) return resultOf.toFixed(2);
+    if (decimalInput.value === '2') return resultOf.toFixed();
+    if (decimalInput.value === '4') return resultOf.toFixed(3);
+    if (decimalInput.value === '5') return resultOf.toFixed(4);
+    if (decimalInput.value === '6') return resultOf;
 }
 
 

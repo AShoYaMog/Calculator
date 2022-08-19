@@ -202,7 +202,7 @@ function clearFirstValue() {
 function memoryOnePlus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryOne = Number(memoryOne) + Number(firstValue);
+    memoryOne = Number(memoryOne) + decimalLimiter(Number(firstValue));
     clearFirstValue();
     minusSelect = false;
     display();
@@ -211,7 +211,7 @@ function memoryOnePlus() {
 function memoryOneMinus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryOne = Number(memoryOne) - Number(firstValue);
+    memoryOne = Number(memoryOne) - decimalLimiter(Number(firstValue));
     clearFirstValue();
     minusSelect = false;
     display();
@@ -231,7 +231,7 @@ function memoryOneClear() {
 function memoryTwoPlus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryTwo = Number(memoryTwo) + Number(firstValue);
+    memoryTwo = Number(memoryTwo) + decimalLimiter(Number(firstValue));
     clearFirstValue();
     minusSelect = false;
     display();
@@ -240,7 +240,7 @@ function memoryTwoPlus() {
 function memoryTwoMinus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryTwo = Number(memoryTwo) - Number(firstValue);
+    memoryTwo = Number(memoryTwo) - decimalLimiter(Number(firstValue));
     clearFirstValue();
     minusSelect = false;
     display(); 

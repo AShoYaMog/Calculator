@@ -35,7 +35,7 @@ let CeCButton = document.querySelector('#CEC');
 CeCButton.addEventListener('mouseup', CeC);
 let onAcButton = document.querySelector('#OnAc');
 OnAc.addEventListener('mouseup', allClear);
-let overflowError = false;
+let overflowErrorStatus = false;
 let overflowErrorIcon = document.querySelector('.overflowError');
 let squareRootButton = document.querySelector('#squareRoot');
 squareRootButton.addEventListener('mouseup', squareRoot);
@@ -78,6 +78,7 @@ function isMemoryFill() {
 }
 
 function addNumber(event) {
+    if ((event.target.value === '.') && (firstValue.length === 0)) firstValue += '0';
     if (!firstValueExist) firstValue += event.target.value;
     if (firstValueExist) secondValue += event.target.value;
     if (firstValue.length > NUMBER_OF_DIGITTS) remuveNumber()
@@ -158,15 +159,15 @@ function procent() {
 
 
 function display() {
+    overflowError()
     if (!firstValueExist) displayValue.textContent = firstValue;
     if (firstValueExist) displayValue.textContent = secondValue;
     isMInusSelect();
-    isMemoryFill();
-    if (overflowError) overflowErrorIcon.style.opacity = '1';
-    if (!overflowError) overflowErrorIcon.style.opacity = '0';
+    isMemoryFill();    
 }
 
 function displayResult() {
+    overflowError()
     displayValue.textContent = firstValue;
     isMInusSelect();
     isMemoryFill();
@@ -190,7 +191,6 @@ function allClear() {
     memoryTwo = '';
     firstValueExist = false;
     minusSelect = false;
-    overflowError = false;
     MamoryTwoPrest = false;
     display()
 }
@@ -290,4 +290,12 @@ function rounding(resultOf) {
     }
 }
 
-
+function overflowError() {
+    switch (firstValue.toString().length > NUMBER_OF_DIGITTS) {
+        case true:
+            firstValue = firstValue.toString().includes('.') ? firstValue.toString().slice(0,13) : firstValue.toString().slice(0,12);
+            return overflowErrorIcon.style.opacity = '1';
+        case false:
+            return overflowErrorIcon.style.opacity = '0';
+    }
+}

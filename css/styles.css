@@ -300,6 +300,12 @@ p {
     gap: 16px;
 }
 
+#OnAc {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .button {
     width: 42px;
     height: 35px;

@@ -59,6 +59,7 @@ let MemoryTwoPrest = false;
 let MemoryOneIcon = document.querySelector('#MOneSign');
 let MemoryTwoIcon = document.querySelector('#MTwoSign');
 let decimalInput = document.querySelector('#decimalInput');
+let roundingInput = document.querySelector('#roundingInput');
 
 
 function isNegativ() {
@@ -116,10 +117,10 @@ function equals() {
 
 function calculate() {
     if (!operation) return;
-    if (operation === 'plus') firstValue = decimalLimiter(addition());
-    if (operation === 'minus') firstValue = decimalLimiter(subtraction());
-    if (operation === 'multiply') firstValue = decimalLimiter(multiplication());
-    if (operation === 'divide') firstValue = decimalLimiter(division());
+    if (operation === 'plus') firstValue = rounding(decimalLimiter(addition())) ;
+    if (operation === 'minus') firstValue = rounding(decimalLimiter(subtraction()));
+    if (operation === 'multiply') firstValue = rounding(decimalLimiter(multiplication()));
+    if (operation === 'divide') firstValue = rounding(decimalLimiter(division()));
     secondValue = '';
     displayResult()
 }
@@ -144,6 +145,7 @@ function squareRoot() {
     isNegativ()
     firstValue = Math.sqrt(firstValue);
     firstValue = firstValue.toFixed(NUMBER_OF_DIGITTS - Math.round(firstValue));
+    firstValue = decimalLimiter(Number(firstValue));
     firstValueExist = true;
     displayResult()
 }
@@ -202,7 +204,7 @@ function clearFirstValue() {
 function memoryOnePlus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryOne = Number(memoryOne) + decimalLimiter(Number(firstValue));
+    memoryOne = rounding(decimalLimiter((Number(memoryOne) + Number(firstValue))));
     clearFirstValue();
     minusSelect = false;
     display();
@@ -211,7 +213,7 @@ function memoryOnePlus() {
 function memoryOneMinus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryOne = Number(memoryOne) - decimalLimiter(Number(firstValue));
+    memoryOne = rounding(decimalLimiter((Number(memoryOne) + Number(firstValue))));
     clearFirstValue();
     minusSelect = false;
     display();
@@ -231,7 +233,7 @@ function memoryOneClear() {
 function memoryTwoPlus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryTwo = Number(memoryTwo) + decimalLimiter(Number(firstValue));
+    memoryTwo = rounding(decimalLimiter((Number(memoryOne) + Number(firstValue))));
     clearFirstValue();
     minusSelect = false;
     display();
@@ -240,7 +242,7 @@ function memoryTwoPlus() {
 function memoryTwoMinus() {
     isNegativ()
     if (firstValueExist && secondValue) calculate();
-    memoryTwo = Number(memoryTwo) - decimalLimiter(Number(firstValue));
+    memoryTwo = rounding(decimalLimiter((Number(memoryOne) + Number(firstValue))));
     clearFirstValue();
     minusSelect = false;
     display(); 
@@ -261,11 +263,31 @@ function MemoryTwoReadClear() {
 }
 
 function decimalLimiter(resultOf) {
-    if (decimalInput.value === ('1' || '3')) return resultOf.toFixed(2);
-    if (decimalInput.value === '2') return resultOf.toFixed();
-    if (decimalInput.value === '4') return resultOf.toFixed(3);
-    if (decimalInput.value === '5') return resultOf.toFixed(4);
-    if (decimalInput.value === '6') return resultOf;
+    switch (decimalInput.value) {
+        case '1':
+            return resultOf.toFixed(2);
+        case '2':
+            return resultOf.toFixed();
+        case '3':
+            return resultOf.toFixed(2);
+        case '4':
+            return resultOf.toFixed(3);
+        case '5':
+            return resultOf.toFixed(4);
+        case '6':
+            return resultOf
+    }
+}
+
+function rounding(resultOf) {
+    switch (roundingInput.value) {
+        case '1':
+            return Math.ceil(resultOf);
+        case '2':
+            return resultOf;
+        case '3':
+            return Math.floor(resultOf); 
+    }
 }
 
 
